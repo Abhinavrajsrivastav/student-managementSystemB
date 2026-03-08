@@ -17,6 +17,11 @@ public class StudentController {
     public StudentController(StudentRepository repo) {
         this.repo = repo;
     }
+    
+    @GetMapping
+    public String hello() {
+        return "Hello, World!";
+    }
 
     @GetMapping
     public List<Student> getAllStudents() {

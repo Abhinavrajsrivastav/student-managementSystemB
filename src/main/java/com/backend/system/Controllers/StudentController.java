@@ -8,7 +8,7 @@ import com.backend.system.Repo.StudentRepository;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping("/students")
 public class StudentController {
 

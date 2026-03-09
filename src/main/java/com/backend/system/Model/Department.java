@@ -11,14 +11,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "departments") // Explicit table naming is better for MySQL
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true) // Ensures you don't get duplicate dept names
     private String name;
 
-    @OneToMany(mappedBy = "department")
-    @JsonIgnore // Prevents infinite recursion in JSON
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+    @JsonIgnore 
     private List<Student> students;
 }
